@@ -13,24 +13,13 @@ https://jmap.io/crash-course.html
 import argparse
 import collections
 import datetime as dt
-import importlib
 import json
 import os
 import string
 import subprocess
 import sys
 
-ADDITIONAL_MODULES = ["requests"]
-
-# prereqs
-for module in ADDITIONAL_MODULES:
-    try:
-        m = importlib.import_module(module)
-        globals()[module] = m
-    except ImportError:
-        sys.exit(
-            f"{module} module could not be loaded, check README for installation requirements"
-        )
+import requests
 
 
 def str_to_bool(s):

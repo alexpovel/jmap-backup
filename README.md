@@ -10,12 +10,12 @@ Based on the amazing [work by Nathan Grigg][1] 🙏
 
 - a Fastmail API key (get from https://app.fastmail.com/settings/security/tokens)
 - Docker *-or-*
-- Python 3 + the `requests` module
+- Python 3
 
-To get the module, either install it in a virtualenv, or globally with:
+Install dependencies with:
 
-```shell
-PIP_REQUIRE_VIRTUALENV=false python3 -m pip install --break-system-packages requests
+```bash
+pip install .
 ```
 
 ## Setup (run locally)
@@ -36,7 +36,7 @@ A bare minimum config file must contain at least the `dest_dir` and `token` keys
 ```
 
 > _The configuration is now in JSON format (prior to v1.1 it was stored as YAML). This change was made because Python can read _and_ write it without requiring the PyYAML module. If you're not comfortable converting your legacy config file to JSON by hand, I suggest using [`yq`][5]:_
-> 
+>
 > ```sh
 > yq -p yaml -o json fastmail.yml >fastmail.json
 > ```
@@ -103,7 +103,7 @@ jmap-backup \
 ## Additional (optional) parameters for the config file
 
 | Key           | Description                                                                                                                                                                                                | Example value |
-|:------------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |:------------- |
+| :------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------ |
 | `delay_hours` | Back up only messages at least this many hours old                                                                                                                                                         | `24`          |
 | `not_before`  | Cut off date before which messages will not be backed up                                                                                                                                                   | `2018-06-01`  |
 | `pre_cmd`     | Command (and args) to run prior to execution, most often used to mount some remote storage location such as an SMB or NFS share. It is formatted as an array so you can provide additional args as needed. | (see below)   |
@@ -112,7 +112,7 @@ jmap-backup \
 Example of pre/post commands in config file (`~` chars will be expanded by Python):
 
 ```js
-{ 
+{
   "pre_cmd": [
     "/sbin/mount", "-t", "smbfs",
     "//luckman212:hunter2@nas/backups", "/mnt/jmap"

@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jmap-backup"
+version = "0.1.0"
+description = "JMAP/Fastmail Email backup tool"
+requires-python = ">=3.12"
+dependencies = ["requests~=2.32"]
+
+[tool.setuptools]
+py-modules = []

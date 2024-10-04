@@ -72,25 +72,8 @@ def query(session, start, end):
                     "accountId": session.account_id,
                     "sort": [{"property": "receivedAt", "isAscending": False}],
                     "filter": {
-                        "operator": "AND",
-                        "conditions": [
-                            {
-                                "after": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                                "before": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
-                            },
-                            {
-                                "operator": "NOT",
-                                "conditions": [
-                                    {
-                                        "operator": "OR",
-                                        "conditions": [
-                                            {"inMailbox": "#spam"},
-                                            {"inMailbox": "#trash"},
-                                        ],
-                                    }
-                                ],
-                            },
-                        ],
+                        "after": start.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                        "before": end.strftime("%Y-%m-%dT%H:%M:%SZ"),
                     },
                     "limit": 50,
                 },

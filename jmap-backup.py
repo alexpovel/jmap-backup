@@ -204,9 +204,8 @@ def download_email(session, email, base_dir):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
-        description="Back up a Fastmail JMAP mailbox in .eml format", add_help=False
+        description="Back up a Fastmail JMAP mailbox in .eml format",
     )
-    parser.add_argument("-h", "--help", action="store_true", help=argparse.SUPPRESS)
     parser.add_argument(
         "-v",
         "--verify",
@@ -226,9 +225,6 @@ if __name__ == "__main__":
         nargs=1,
     )
     args = parser.parse_args()
-    if args.help:
-        parser.print_help()
-        sys.exit(0)
 
     if args.config:
         cfg_file = os.path.expanduser(args.config[0])
